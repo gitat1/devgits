@@ -23,6 +23,14 @@ pipeline {
     stage("deploy") {
       steps {
         echo "Deploying application..."
+        // you can now read credentials setup in jenkins and deploy this to server, i.e. for login
+        withCredentials([
+          usernamePassword(credentials: 'stringnamesetup in jenkins', usernameVariable: USER, passwordVariable: PWD)
+        ]){
+          // now you can use $USER and $PWD to read the username and pwd and use in sh file
+          sh "copy artifact, unzip file, login into database using above credential and run database deployment"
+          // this can be done after installing Jenkins credential and credential binding pluggins
+        }
       }
     }
   }
