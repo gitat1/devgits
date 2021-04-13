@@ -9,7 +9,7 @@ pipeline {
       }
     }
     stage("test") {
-      // if you want to run test only on specific env/ branch then can use when clause
+      // if you want to run test only on specific env/ branch then can use when clause, now webhook enabled
       when {
         expression {
           echo "BRANCH_NAME is env variable that can be used, let say if want run test only on dev or master branch ...."
